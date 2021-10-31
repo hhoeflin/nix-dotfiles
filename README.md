@@ -26,3 +26,22 @@ to work to invoke it as a service. A workaround is to run
 spotifyd --no-daemon
 ```
 in a console. Then the service should be available from the spotify-tui device menu.
+
+The password for the Spotify account is stored using the `pass` program, which uses
+a `gpg` identityfor encryption. In order to generate a new one, do
+```bash
+gpg --generate-key
+gpg -k
+```
+
+And use the listed id to create a password store
+
+```bash
+pass --init
+pass add spotify
+```
+
+In order to see the password, do
+```
+pass show spotify
+``
