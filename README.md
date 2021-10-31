@@ -14,3 +14,15 @@ ln -s $(pwd)/home-manager ~/.config/nixpkgs
 ```
 
 After this, just run `home-manager switch` and the environment should be built.
+
+# Programs
+
+## Spotify playback
+
+Spotify playback is supported with the `spotify-tui`, which can be run with the `spt` command.
+In order for playback to work, the spotify-daemon has to run. Currently, it does not seem
+to work to invoke it as a service. A workaround is to run
+```bash
+spotifyd --no-daemon
+```
+in a console. Then the service should be available from the spotify-tui device menu.
