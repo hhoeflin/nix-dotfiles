@@ -27,9 +27,19 @@
     git
     htop
     tmux
+
+    # python tools
     conda
     micromamba
     python3
+    mypy
+    black
+    python39Packages.isort
+
+    # neovim
+    tree-sitter
+    nodePackages.pyright
+    luaPackages.lua-lsp
 
     # for spotify
     spotifyd
@@ -62,11 +72,14 @@
       ll = "exa -lahF";
       lt = "exa -lahF --tree";
     };
+    bashrcExtra = ''
+      export PATH=$HOME/.nix-profile/bin:$PATH
+    '';
   };
 
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
+    enableBashIntegration = true;
   };
 
   # tmux

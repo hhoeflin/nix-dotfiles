@@ -10,7 +10,7 @@ repository, switch into its root directory and execute:
 
 ```bash
 ln -s $(pwd)/nix ~/.config/nix
-ln -s $(pwd)/home-manager ~/.config/nixpkgs
+ln -s $(pwd)/nixpkgs ~/.config/nixpkgs
 ```
 
 After this, just run `home-manager switch` and the environment should be built.

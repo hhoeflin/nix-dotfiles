@@ -43,9 +43,13 @@
       # compe-tmux
       nvim-compe
       luasnip
+      compe-tabnine
 
       # lsp
       nvim-lspconfig
+
+      # treesitter
+      nvim-treesitter
 
       # highlighting
       semshi
