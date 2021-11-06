@@ -81,6 +81,7 @@
     enable = true;
     enableBashIntegration = true;
   };
+  xdg.configFile."starship.toml".source = starship/starship.toml;
 
   # tmux
   xdg.configFile."tmux/tmux.conf".source = tmux/tmux.conf;
