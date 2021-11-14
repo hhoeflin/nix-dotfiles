@@ -104,6 +104,9 @@
   # glow
   xdg.configFile."glow/glow.yml".source = glow/glow.yml;
 
+  # lazygit
+  xdg.configFile."lazygit/config.yml".source = lazygit/config.yml;
+
   # neovim
   programs.neovim = import nvim/neovim.nix {pkgs=pkgs;};
 
