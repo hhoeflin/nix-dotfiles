@@ -84,6 +84,7 @@
       ls = "exa -F";
       ll = "exa -lahF";
       lt = "exa -lahF --tree";
+      lg = "lazygit";
     };
     bashrcExtra = ''
       export PATH=$HOME/.nix-profile/bin:$PATH
