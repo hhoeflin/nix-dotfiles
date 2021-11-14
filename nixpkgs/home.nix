@@ -28,6 +28,7 @@
     htop
     tmux
     glow
+    lazygit
 
     # learning
     exercism
@@ -40,10 +41,17 @@
     black
     python39Packages.isort
 
+    # haskell
+    ghc
+    stack
+    hlint
+    ormolu
+
     # neovim
     tree-sitter
     nodePackages.pyright
     luaPackages.lua-lsp
+    haskell-language-server
 
     # for spotify
     spotifyd
@@ -91,6 +99,9 @@
   # tmux
   xdg.configFile."tmux/tmux.conf".source = tmux/tmux.conf;
   xdg.configFile."tmux/tmuxline.conf".source = tmux/tmuxline.conf;
+
+  # glow
+  xdg.configFile."glow/glow.yml".source = glow/glow.yml;
 
   # neovim
   programs.neovim = import nvim/neovim.nix {pkgs=pkgs;};

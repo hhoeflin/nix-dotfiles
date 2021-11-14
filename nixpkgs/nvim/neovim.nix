@@ -53,5 +53,6 @@
 
       # highlighting
       semshi
+      haskell-vim
     ];
 }

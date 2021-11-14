@@ -7,7 +7,8 @@ g.ale_linters = {
   python={'flake8', 'mypy', 'pydocstyle'},
   javascript={'xo'},
   html={'htmlhint'},
-  rust={cargo}
+  rust={'cargo'},
+  haskell={'hlint'},
 }
 g.ale_fixers = {
    ['*']={'remove_trailing_lines', 'trim_whitespace'},
@@ -16,7 +17,8 @@ g.ale_fixers = {
    javascript= {'prettier'},
    css= {'prettier'},
    html={'prettier'},
-   rust= {'rustfmt'}
+   rust= {'rustfmt'},
+   haskell={'ormolu'}
 }
 -- Set this variable to 1 to fix files when you save them.
 g.ale_fix_on_save = 1
