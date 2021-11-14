@@ -44,4 +44,4 @@ pass add spotify
 In order to see the password, do
 ```
 pass show spotify
-``
+```
