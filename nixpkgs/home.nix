@@ -27,6 +27,10 @@
     git
     htop
     tmux
+    glow
+
+    # learning
+    exercism
 
     # python tools
     conda
@@ -62,6 +66,7 @@
     userEmail = "hhoeflin@gmail.com";
     extraConfig = {
       core.editor = "nvim";
+      init.defaultBranch = "master";
     };
   };
 
