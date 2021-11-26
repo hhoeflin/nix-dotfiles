@@ -40,7 +40,7 @@
               };
 
               imports = [
-                ./hhoeflin/home.nix
+                ./base/home.nix
               ];
             };
         };
