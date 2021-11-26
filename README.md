@@ -1,23 +1,53 @@
 # Setup
 
 In this repository, all files for nix configuration and the home-manager are stored.
+Home-manager here uses a setup using flakes. Very helpful blogs in order to
+convert your home manager use to flakes are [Blog 1][blob_1] and [Blog 2][blob_2].
 
-In order to use it, a working installation of nix and home-manager is necessary.
+[blog_1]: https://dee.underscore.world/blog/home-manager-flakes/
+[blog_2]: https://dzone.com/articles/nixos-home-manager-on-native-nix-flake-installatio
 
-After this, the directories in this repository need to be linked to places in the
-`~/.config` directory to be properly set up. In order to do this, clone the
-repository, switch into its root directory and execute:
+In order to use it, a working installation of nix is necessary. For installing nix in
+single-user mode, do
+
+```bash
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
+```
+and otherwise instruction can be found in the [Nix Manual][nix_manual_install]. As we
+are using flakes for home-manager, a separate installation step is not
+needed anymore.
+
+[nix_manual_install]: https://nixos.org/manual/nix/unstable/installation/installing-binary.html
+
+In order to have an appropriate configuration for nix, we need to link
+its config files in the correct location:
 
 ```bash
 ln -s $(pwd)/nix ~/.config/nix
-ln -s $(pwd)/nixpkgs ~/.config/nixpkgs
 ```
 
-After this, just run `home-manager switch` and the environment should be built.
+Now we can install home-manager as well as our entire user configurations using our flakes setup.
+For this in the root of this repository do:
+
+```bash
+nix build nix build .#hhoeflin
+./result/activate
+```
+
+and home-manager will be built and the home-folder configuration created. For the
+next iterations you can then do
+
+```bash
+home-manager switch --flake .#hhoeflin
+```
+or if you are not in the root of `nix-dotfiles`, then just replace `.` with the
+path to the dotfiles.
+
+or any other configuration that is also available.
 
 # Programs
 
-## Spotify playback
+## Spotify playback (only in hhoeflin)
 
 Spotify playback is supported with the `spotify-tui`, which can be run with the `spt` command.
 In order for playback to work, the spotify-daemon has to run. Currently, it does not seem

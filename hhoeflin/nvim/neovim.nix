@@ -28,31 +28,37 @@
       sha256 = "1q2z52pkfas4s8lq4bfcpadq5fr18635kv5l8hggr7fzrdccjv45";
 	  };
     };
-    in with pkgs.vimPlugins; [
-      lualine-nvim
-	  alpha
-	  ale
-	  bufstop
-      # File tree
-      nvim-web-devicons
-      nvim-tree-lua
-      vim-nix
-      dracula-vim
+  in with pkgs.vimPlugins; [
+    # various
+    lualine-nvim
+	alpha
+	ale
+	bufstop
+    dracula-vim
 
-      # completion engine
-      # compe-tmux
-      nvim-compe
-      luasnip
-      compe-tabnine
+    # smart indentation
+    vim-sleuth
+    # File tree
+    nvim-web-devicons
+    nvim-tree-lua
 
-      # lsp
-      nvim-lspconfig
+    # nix
+    vim-nix
 
-      # treesitter
-      nvim-treesitter
+    # completion engine
+    # compe-tmux
+    nvim-compe
+    luasnip
+    compe-tabnine
 
-      # highlighting
-      semshi
-      haskell-vim
-    ];
+    # lsp
+    nvim-lspconfig
+
+    # treesitter
+    nvim-treesitter
+
+    # highlighting
+    semshi
+    haskell-vim
+  ];
 }
