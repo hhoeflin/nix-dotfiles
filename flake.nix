@@ -40,12 +40,48 @@
               };
 
               imports = [
-                ./base/home.nix
+                ./base/home.nix ./hhoeflin-only/home.nix
               ];
+
+            };
+        };
+        hoeflho1 = inputs.home-manager.lib.homeManagerConfiguration {
+          system = "x86_64-linux";
+          # Home Manager needs a bit of information about you and the
+          # paths it should manage.
+          homeDirectory = "/home/hoeflho1";
+          username = "hoeflho1";
+          # This value determines the Home Manager release that your
+          # configuration is compatible with. This helps avoid breakage
+          # when a new Home Manager release introduces backwards
+          # incompatible changes.
+          # You can update Home Manager without changing this value. See
+          # the Home Manager release notes for a list of state version
+          # changes in each release.
+          stateVersion = "21.05";
+
+          configuration = { config, pkgs, ... }:
+            let
+              overlay-unstable = final: prev: {
+                unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
+              };
+            in
+            {
+              nixpkgs.overlays = [ overlay-unstable ];
+              nixpkgs.config = {
+                allowUnfree = true;
+                allowBroken = true;
+              };
+
+              imports = [
+                ./base/home.nix ./hoeflho1-only/home.nix
+              ];
+
             };
         };
       };
       hhoeflin = self.homeConfigurations.hhoeflin.activationPackage;
+      hoeflho1 = self.homeConfigurations.hoeflho1.activationPackage;
       defaultPackage.x86_64-linux = self.hhoeflin;
     };
 }

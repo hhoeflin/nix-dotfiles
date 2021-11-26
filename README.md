@@ -45,6 +45,10 @@ path to the dotfiles.
 
 or any other configuration that is also available.
 
+A great source of information for nix is also [nix.dev][nix.dev]
+
+[nix.dev]: https://nix.dev/
+
 # Programs
 
 ## Spotify playback (only in hhoeflin)

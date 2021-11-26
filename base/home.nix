@@ -4,23 +4,16 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-
- #
-  home.stateVersion = "21.05";
-
   home.packages = with pkgs; [
+    git # config is customized in other files
     exa
     fzf
     bat
     ripgrep
-    git
     htop
     tmux
     glow
     lazygit
-
-    # learning
-    exercism
 
     # python tools
     conda
@@ -30,42 +23,11 @@
     black
     python39Packages.isort
 
-    # haskell
-    ghc
-    stack
-    hlint
-    ormolu
-
     # neovim
     tree-sitter
     nodePackages.pyright
     luaPackages.lua-lsp
-    haskell-language-server
-
-    # for spotify
-    spotifyd
-    spotify-tui
-    pass
-    gnupg1
   ];
-
-  services.spotifyd = {
-    enable = true;
-  };
-  xdg.configFile."spotifyd" = {
-    source = ./spotifyd;
-    recursive = true;
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "Holger Hoefling";
-    userEmail = "hhoeflin@gmail.com";
-    extraConfig = {
-      core.editor = "nvim";
-      init.defaultBranch = "master";
-    };
-  };
 
   programs.bash = {
     enable = true;
