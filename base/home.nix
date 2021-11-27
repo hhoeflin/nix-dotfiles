@@ -19,6 +19,7 @@
     conda
     micromamba
     python3
+    poetry
     mypy
     black
     python39Packages.isort
