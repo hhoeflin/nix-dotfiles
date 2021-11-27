@@ -43,7 +43,8 @@ home-manager switch --flake .#hhoeflin
 or if you are not in the root of `nix-dotfiles`, then just replace `.` with the
 path to the dotfiles.
 
-or any other configuration that is also available.
+This way, the `hhoeflin` or any other configuration that is also available
+can easily be run.
 
 A great source of information for nix is also [nix.dev][nix.dev]
 
