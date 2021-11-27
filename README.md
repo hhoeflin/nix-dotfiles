@@ -2,7 +2,7 @@
 
 In this repository, all files for nix configuration and the home-manager are stored.
 Home-manager here uses a setup using flakes. Very helpful blogs in order to
-convert your home manager use to flakes are [Blog 1][blob_1] and [Blog 2][blob_2].
+convert your home manager use to flakes are [Blog 1][blog_1] and [Blog 2][blog_2].
 
 [blog_1]: https://dee.underscore.world/blog/home-manager-flakes/
 [blog_2]: https://dzone.com/articles/nixos-home-manager-on-native-nix-flake-installatio
