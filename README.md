@@ -46,7 +46,7 @@ path to the dotfiles.
 This way, the `hhoeflin` or any other configuration that is also available
 can easily be run.
 
-A great source of information for nix is also [nix.dev][nix.dev]
+A great source of information for nix is also [nix.dev][nix.dev].
 
 [nix.dev]: https://nix.dev/
 
