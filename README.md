@@ -28,7 +28,7 @@ In order to have an appropriate configuration for nix, we need to link
 its config files in the correct location:
 
 ```bash
-ln -s $(pwd)/nix ~/.config/nix
+ln -sn $(pwd)/nix ~/.config/nix
 ```
 
 Now we can install home-manager as well as our entire user configurations using our flakes setup.
