@@ -22,6 +22,12 @@ needed anymore. At the end of the install, the following code activates nix:
 ```
 and should be added to the .bashrc (unless otherwise managed).
 
+This setup currently uses not the latest unstable branch, so we set the registry
+
+```bash
+nix registry add flake:nixpkgs github:nixos/nixpkgs/4789953e5c1
+```
+
 [nix_manual_install]: https://nixos.org/manual/nix/unstable/installation/installing-binary.html
 
 In order to have an appropriate configuration for nix, we need to link
