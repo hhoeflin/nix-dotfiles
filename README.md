@@ -35,7 +35,7 @@ Now we can install home-manager as well as our entire user configurations using 
 For this in the root of this repository do:
 
 ```bash
-nix build nix build .#hhoeflin
+nix build .#hhoeflin
 ./result/activate
 ```
 
