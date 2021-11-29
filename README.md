@@ -15,7 +15,12 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 ```
 and otherwise instruction can be found in the [Nix Manual][nix_manual_install]. As we
 are using flakes for home-manager, a separate installation step is not
-needed anymore.
+needed anymore. At the end of the install, the following code activates nix:
+
+```bash
+. $HOME/.nix-profile/etc/profile.d/nix.sh
+```
+and should be added to the .bashrc (unless otherwise managed).
 
 [nix_manual_install]: https://nixos.org/manual/nix/unstable/installation/installing-binary.html
 
