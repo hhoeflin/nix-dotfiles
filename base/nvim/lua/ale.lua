@@ -4,7 +4,7 @@
 local g = vim.g
 g.ale_html_htmlhint_executable = 'npx htmlhint'
 g.ale_linters = {
-  python={'flake8', 'mypy', 'pydocstyle'},
+  python={'flake8', 'pydocstyle'},
   javascript={'xo'},
   html={'htmlhint'},
   rust={'cargo'},
