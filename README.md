@@ -15,7 +15,18 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 ```
 and otherwise instruction can be found in the [Nix Manual][nix_manual_install]. As we
 are using flakes for home-manager, a separate installation step is not
-needed anymore.
+needed anymore. At the end of the install, the following code activates nix:
+
+```bash
+. $HOME/.nix-profile/etc/profile.d/nix.sh
+```
+and should be added to the .bashrc (unless otherwise managed).
+
+This setup currently uses not the latest unstable branch, so we set the registry
+
+```bash
+nix registry add flake:nixpkgs github:nixos/nixpkgs/4789953e5c1
+```
 
 [nix_manual_install]: https://nixos.org/manual/nix/unstable/installation/installing-binary.html
 
@@ -23,14 +34,14 @@ In order to have an appropriate configuration for nix, we need to link
 its config files in the correct location:
 
 ```bash
-ln -s $(pwd)/nix ~/.config/nix
+ln -sn $(pwd)/nix ~/.config/nix
 ```
 
 Now we can install home-manager as well as our entire user configurations using our flakes setup.
 For this in the root of this repository do:
 
 ```bash
-nix build nix build .#hhoeflin
+nix build .#hhoeflin
 ./result/activate
 ```
 
