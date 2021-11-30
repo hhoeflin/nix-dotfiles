@@ -20,5 +20,8 @@ do
   vim.api.nvim_set_keymap('n', '<Leader>' .. i, ":" .. i .. 'wincmd w<CR>', {silent=true, noremap=true})
 end
 
+-- end highlight on esc
+vim.api.nvim_set_keymap('n', '<ESC>', ':noh<return><esc>', {silent=true, noremap=true})
+
 -- theme
 vim.cmd("colorscheme dracula")
