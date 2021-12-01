@@ -17,7 +17,6 @@
 
     # python tools
     conda
-    micromamba
     python3
     poetry
     mypy

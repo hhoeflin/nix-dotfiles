@@ -3,9 +3,9 @@
 
   inputs = {
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
-    nixpkgs.url = "github:nixos/nixpkgs/4789953e5c1";
+    nixpkgs.url = "github:nixos/nixpkgs/release-21.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-21.05";
+    home-manager.url = "github:nix-community/home-manager/release-21.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
@@ -24,7 +24,7 @@
           # You can update Home Manager without changing this value. See
           # the Home Manager release notes for a list of state version
           # changes in each release.
-          stateVersion = "21.05";
+          stateVersion = "21.11";
 
           configuration = { config, pkgs, ... }:
             let
