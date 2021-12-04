@@ -31,10 +31,11 @@
   in with pkgs.vimPlugins; [
     # various
     lualine-nvim
-	alpha
-	ale
-	bufstop
+    alpha
+    ale
+    bufstop
     dracula-vim
+    telescope-nvim
 
     # smart indentation
     vim-sleuth
