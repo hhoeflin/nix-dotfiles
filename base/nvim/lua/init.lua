@@ -45,4 +45,4 @@ map('n', '<C-p>', ':NvimTreeToggle <CR>', {noremap=true;})
 require('lsp_compe')
 
 -- telescope
-require('telescope')
+require('my_telescope')
