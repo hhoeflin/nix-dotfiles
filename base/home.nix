@@ -37,8 +37,8 @@
       lt = "exa -lahF --tree";
       lg = "lazygit";
     };
-    bashrcExtra = ''
-      export PATH=$HOME/.nix-profile/bin:$PATH
+    profileExtra = ''
+      . $HOME/.nix-profile/etc/profile.d/nix.sh
     '';
   };
 
