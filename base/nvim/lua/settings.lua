@@ -14,6 +14,9 @@ set.shiftwidth = 4
 set.softtabstop = 4
 set.expandtab = true
 
+-- switch without saving buffer
+set.hidden = true
+
 -- switch between windows using the window number
 for i = 1, 9
 do
