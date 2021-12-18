@@ -54,6 +54,7 @@
 
     # lsp
     nvim-lspconfig
+    lsp_signature-nvim
 
     # treesitter
     nvim-treesitter
