@@ -10,6 +10,7 @@
     fzf
     bat
     ripgrep
+    fd
     htop
     tmux
     glow
