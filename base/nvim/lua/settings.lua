@@ -27,4 +27,5 @@ end
 vim.api.nvim_set_keymap('n', '<ESC>', ':noh<return><esc>', {silent=true, noremap=true})
 
 -- theme
+set.termguicolors = true
 vim.cmd("colorscheme dracula")

@@ -22,11 +22,21 @@
     bufstop = pkgs.vimUtils.buildVimPlugin {
       name = "bufstop";
       src = pkgs.fetchFromGitHub {
-      owner = "mihaifm";
-	  repo = "bufstop";
-	  rev = "51a87fb1fb3031778b465c5c92007ebd1ac677f6";
-      sha256 = "1q2z52pkfas4s8lq4bfcpadq5fr18635kv5l8hggr7fzrdccjv45";
-	  };
+        owner = "mihaifm";
+	repo = "bufstop";
+	rev = "51a87fb1fb3031778b465c5c92007ebd1ac677f6";
+        sha256 = "1q2z52pkfas4s8lq4bfcpadq5fr18635kv5l8hggr7fzrdccjv45";
+      };
+    };
+
+    my-catppuccin-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "catpuccin";
+      src = pkgs.fetchFromGitHub {
+        owner = "catppuccin";
+        repo = "nvim";
+        rev = "22b34eb9f93430bc010dee1523743b62cd2700fc";
+        sha256 = "sha256-ZcKHpQDcI2jNLhs5VYsVjAUpnM8Jwdo/1O0zo/k1DLM=";
+      };
     };
   in with pkgs.vimPlugins; [
     # various
@@ -34,8 +44,13 @@
     alpha
     ale
     bufstop
-    dracula-vim
     telescope-nvim
+    indent-blankline-nvim
+
+    # themes in use
+    dracula-vim
+    palenight-vim
+    my-catppuccin-nvim
 
     # smart indentation
     vim-sleuth
