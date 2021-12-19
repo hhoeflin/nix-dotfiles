@@ -38,6 +38,17 @@
         sha256 = "sha256-ZcKHpQDcI2jNLhs5VYsVjAUpnM8Jwdo/1O0zo/k1DLM=";
       };
     };
+
+    vim-nightfly = pkgs.vimUtils.buildVimPlugin {
+      name = "vim-nightfly-guicolors";
+      src = pkgs.fetchFromGitHub {
+        owner = "bluz71";
+        repo = "vim-nightfly-guicolors";
+        rev = "d75a30e3874a9746d563634010accae4c463dc22";
+        # sha256 = pkgs.lib.fakeSha256;
+        sha256 = "sha256-JhHjM9pyMnDd8Pkl5VWxn/aeY3b+oiBJh20wsIGYxLk=";
+      };
+    };
   in with pkgs.vimPlugins; [
     # various
     lualine-nvim
@@ -51,6 +62,8 @@
     dracula-vim
     palenight-vim
     my-catppuccin-nvim
+    papercolor-theme
+    vim-nightfly
 
     # smart indentation
     vim-sleuth

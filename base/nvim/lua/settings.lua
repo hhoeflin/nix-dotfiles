@@ -28,4 +28,4 @@ vim.api.nvim_set_keymap('n', '<ESC>', ':noh<return><esc>', {silent=true, noremap
 
 -- theme
 set.termguicolors = true
-vim.cmd("colorscheme dracula")
+vim.cmd("colorscheme nightfly")

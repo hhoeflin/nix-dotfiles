@@ -32,6 +32,12 @@
   };
 
 
+  # kitty
+  xdg.configFile."kitty" = {
+    source = ./kitty;
+    recursive = true;
+  };
+
   services.spotifyd = {
     enable = true;
   };
