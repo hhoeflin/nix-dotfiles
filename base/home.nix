@@ -41,6 +41,9 @@
     profileExtra = ''
       . $HOME/.nix-profile/etc/profile.d/nix.sh
     '';
+    initExtra = ''
+      export PATH=$HOME/.local/bin:$PATH
+    '';
   };
 
   programs.starship = {
