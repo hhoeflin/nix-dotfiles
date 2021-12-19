@@ -1,9 +1,11 @@
 require('telescope').setup{}
 
 -- standard commands
+-- note: binding buffer telescope to <leader>fb and <leader>b; <leader>fb just for 'completeness'
 vim.api.nvim_set_keymap("n", "<leader>ff", ":lua require('telescope.builtin').find_files()<cr>", {silent=true, noremap=true})
 vim.api.nvim_set_keymap("n", "<leader>fg", ":lua require('telescope.builtin').live_grep()<cr>", {silent=true, noremap=true})
 vim.api.nvim_set_keymap("n", "<leader>fb", ":lua require('telescope.builtin').buffers()<cr>", {silent=true, noremap=true})
+vim.api.nvim_set_keymap("n", "<leader>b", ":lua require('telescope.builtin').buffers()<cr>", {silent=true, noremap=true})
 vim.api.nvim_set_keymap("n", "<leader>fh", ":lua require('telescope.builtin').help_tags()<cr>", {silent=true, noremap=true})
 vim.api.nvim_set_keymap("n", "<leader>fe", ":lua require('telescope.builtin').file_browser()<cr>", {silent=true, noremap=true})
 
