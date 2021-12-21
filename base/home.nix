@@ -15,6 +15,7 @@
     tmux
     glow
     lazygit
+    icdiff
 
     # python tools
     conda
