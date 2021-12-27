@@ -85,10 +85,10 @@
     lsp_signature-nvim
 
     # treesitter
-    nvim-treesitter
+    (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
 
     # highlighting
-    semshi
+    #semshi
     haskell-vim
   ];
 }
