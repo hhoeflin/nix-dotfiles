@@ -38,7 +38,6 @@ local on_attach = function(client, bufnr)
         border = "rounded"
       }
     }, bufnr)
-
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and

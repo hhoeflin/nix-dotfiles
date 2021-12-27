@@ -44,5 +44,8 @@ map('n', '<C-p>', ':NvimTreeToggle <CR>', {noremap=true;})
 -- lsp
 require('lsp_compe')
 
+-- treesitter
+require('my_treesitter')
+
 -- telescope
 require('my_telescope')
