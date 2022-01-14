@@ -5,7 +5,8 @@
     #nixpkgs.url = "github:nixos/nixpkgs/release-21.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-21.11";
+    #home-manager.url = "github:nix-community/home-manager/release-21.11";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
@@ -65,9 +66,38 @@
               overlay-unstable = final: prev: {
                 unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
               };
+              overlay-nix = final: prev: {
+                nix_2_3 = prev.nix_2_3.overrideAttrs (oldAttrs: rec {
+    	          patches = (oldAttrs.patches or []) ++ [./hoeflho1-only/patches/nix_patch_2_3.patch];
+                });
+                nix = prev.nix.overrideAttrs (oldAttrs: rec {
+    	          patches = (oldAttrs.patches or []) ++ [./hoeflho1-only/patches/nix_patch_2_5.patch];
+                });
+              };
+              overlay-go = final: prev: {
+                  go_1_16 = prev.go_1_16.overrideAttrs (oldAttrs: rec {
+    	          patches = (oldAttrs.patches or []) ++ [./hoeflho1-only/patches/skip-chown-tests-1.16.patch];
+                });
+              };
+              overlay-brotli = self: super: {
+                python39 = super.python39.override {
+                  packageOverrides = python-self: python-super: {
+                    brotli = python-super.brotli.overrideAttrs (oldAttrs: rec {
+                      src = pkgs.fetchFromGitHub {
+                        owner = "google";
+                        repo = oldAttrs.pname;
+                        rev = "v${oldAttrs.version}";
+                        sha256 = "0idl29gghsbi1gikp86j423hdq30jcwglwi9mzvwg25db4rlwy02";
+                        # for some reason, the test data isn't captured in releases, force a git checkout
+                        deepClone = true;
+                      };
+                    });
+                  };
+                };
+              };
             in
             {
-              nixpkgs.overlays = [ overlay-unstable ];
+              nixpkgs.overlays = [ overlay-unstable overlay-nix overlay-go overlay-brotli];
               nixpkgs.config = {
                 allowUnfree = true;
                 allowBroken = true;

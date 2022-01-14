@@ -12,4 +12,7 @@
     };
   };
 
+  # load the nix-vars to configure correctly
+  home.file."profile.d/nix_vars.sh".source = profile/nix_vars.sh;
+
 }
