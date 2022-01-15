@@ -5,6 +5,9 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    # we want nix itself to be installed by home-manager
+    nix
+
     git # config is customized in other files
     exa
     fzf
