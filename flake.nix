@@ -66,13 +66,24 @@
               overlay-unstable = final: prev: {
                 unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
               };
-              overlay-nix = final: prev: {
-                nix_2_3 = prev.nix_2_3.overrideAttrs (oldAttrs: rec {
-    	          patches = (oldAttrs.patches or []) ++ [./hoeflho1-only/patches/nix_patch_2_3.patch];
-                });
-                nix = prev.nix.overrideAttrs (oldAttrs: rec {
-    	          patches = (oldAttrs.patches or []) ++ [./hoeflho1-only/patches/nix_patch_2_5.patch];
-                });
+              overlay-nix = final: prev: 
+	      	let prefix = "/home/hoeflho1/nix";
+		in
+	        {
+                  nix_2_3 = (prev.nix_2_3.override {
+                    storeDir = "${prefix}/store";
+                    stateDir = "${prefix}/var";
+                    confDir = "${prefix}/etc";
+		  }).overrideAttrs (oldAttrs: rec {
+    	            patches = (oldAttrs.patches or []) ++ [./hoeflho1-only/patches/nix_patch_2_3.patch];
+                  });
+                  nix = (prev.nix.override {
+                    storeDir = "${prefix}/store";
+                    stateDir = "${prefix}/var";
+                    confDir = "${prefix}/etc";
+		  }).overrideAttrs (oldAttrs: rec {
+    	            patches = (oldAttrs.patches or []) ++ [./hoeflho1-only/patches/nix_patch_2_5.patch];
+                  });
               };
               overlay-go = final: prev: {
                   go_1_16 = prev.go_1_16.overrideAttrs (oldAttrs: rec {
