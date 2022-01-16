@@ -12,12 +12,12 @@
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
     {
       homeConfigurations = {
-        hhoeflin = inputs.home-manager.lib.homeManagerConfiguration {
+        hhoeflin = inputs.home-manager.lib.homeManagerConfiguration rec {
           system = "x86_64-linux";
           # Home Manager needs a bit of information about you and the
           # paths it should manage.
-          homeDirectory = "/home/hhoeflin";
           username = "hhoeflin";
+          homeDirectory = "/home/" + username;
           # This value determines the Home Manager release that your
           # configuration is compatible with. This helps avoid breakage
           # when a new Home Manager release introduces backwards
@@ -27,7 +27,7 @@
           # changes in each release.
           stateVersion = "21.11";
 
-          configuration = { config, pkgs, ... }:
+          configuration = { config, pkgs, username, ... }:
             let
               overlay-unstable = final: prev: {
                 unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
@@ -41,7 +41,7 @@
               };
 
               imports = [
-                ./base/home.nix ./hhoeflin-only/home.nix
+                ./base/home.nix ./hhoeflin/home.nix
               ];
 
             };
@@ -66,7 +66,7 @@
               overlay-unstable = final: prev: {
                 unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
               };
-              overlay-nix = final: prev: 
+              overlay-nix = final: prev:
 	      	let prefix = "/home/hoeflho1/nix";
 		in
 	        {
@@ -75,19 +75,19 @@
                     stateDir = "${prefix}/var";
                     confDir = "${prefix}/etc";
 		  }).overrideAttrs (oldAttrs: rec {
-    	            patches = (oldAttrs.patches or []) ++ [./hoeflho1-only/patches/nix_patch_2_3.patch];
+    	            patches = (oldAttrs.patches or []) ++ [./hoeflho1/patches/nix_patch_2_3.patch];
                   });
                   nix = (prev.nix.override {
                     storeDir = "${prefix}/store";
                     stateDir = "${prefix}/var";
                     confDir = "${prefix}/etc";
 		  }).overrideAttrs (oldAttrs: rec {
-    	            patches = (oldAttrs.patches or []) ++ [./hoeflho1-only/patches/nix_patch_2_5.patch];
+    	            patches = (oldAttrs.patches or []) ++ [./hoeflho1/patches/nix_patch_2_5.patch];
                   });
               };
               overlay-go = final: prev: {
                   go_1_16 = prev.go_1_16.overrideAttrs (oldAttrs: rec {
-    	          patches = (oldAttrs.patches or []) ++ [./hoeflho1-only/patches/skip-chown-tests-1.16.patch];
+    	          patches = (oldAttrs.patches or []) ++ [./hoeflho1/patches/skip-chown-tests-1.16.patch];
                 });
               };
               overlay-brotli = self: super: {
@@ -115,7 +115,7 @@
               };
 
               imports = [
-                ./base/home.nix ./hoeflho1-only/home.nix
+                ./base/home.nix ./hoeflho1/home.nix
               ];
 
             };
