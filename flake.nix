@@ -17,7 +17,7 @@
           # Home Manager needs a bit of information about you and the
           # paths it should manage.
           username = "hhoeflin";
-          homeDirectory = "/home/" + username;
+          homeDirectory = "/home/hhoeflin";
           # This value determines the Home Manager release that your
           # configuration is compatible with. This helps avoid breakage
           # when a new Home Manager release introduces backwards
@@ -27,7 +27,7 @@
           # changes in each release.
           stateVersion = "21.11";
 
-          configuration = { config, pkgs, username, ... }:
+          configuration = { config, pkgs, ... }:
             let
               overlay-unstable = final: prev: {
                 unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
