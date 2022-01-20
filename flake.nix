@@ -12,7 +12,7 @@
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
     {
       homeConfigurations = {
-        hhoeflin = inputs.home-manager.lib.homeManagerConfiguration rec {
+        hhoeflin = inputs.home-manager.lib.homeManagerConfiguration {
           system = "x86_64-linux";
           # Home Manager needs a bit of information about you and the
           # paths it should manage.
@@ -34,7 +34,7 @@
               };
             in
             {
-              nixpkgs.overlays = [ overlay-unstable ];
+              nixpkgs.overlays = [ ]; #overlay-unstable ];
               nixpkgs.config = {
                 allowUnfree = true;
                 allowBroken = true;

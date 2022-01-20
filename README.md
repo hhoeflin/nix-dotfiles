@@ -42,6 +42,16 @@ For this in the root of this repository do:
 
 ```bash
 nix build .#hhoeflin
+```
+
+However as we are now also including nix into our home-manager setup, it is necessary to
+first uninstall the nix that is already included in our environment. This only needs
+to be done during the first time.
+
+```bash
+NIX_STORE_PATH=$(dirname $(readlink -f $(which nix)))
+PATH=$NIX_STORE_PATH:$PATH
+nix-env -e nix
 ./result/activate
 ```
 
