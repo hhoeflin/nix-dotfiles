@@ -1,7 +1,7 @@
-PREFIX=/home/hoeflho1/nix
-export NIX_STORE_DIR=${PREFIX}/store
-export NIX_DATA_DIR=${PREFIX}/share
-export NIX_LOG_DIR=${PREFIX}/var/log/nix
-export NIX_STATE_DIR=${PREFIX}/var/nix
-export NIX_CONF_DIR=${PREFIX}/etc/nix
-NIX_PROFILES="${NIX_STORE_DIR}/profiles/default ${PREFIX}/.nix-profile"
+PREFIX=/home/hoeflho1
+export NIX_STORE_DIR=${PREFIX}/nix/store
+export NIX_DATA_DIR=${PREFIX}/nix/share
+export NIX_LOG_DIR=${PREFIX}/nix/var/log/nix
+export NIX_STATE_DIR=${PREFIX}/nix/var/nix
+export NIX_CONF_DIR=${PREFIX}/nix/etc/nix
+NIX_PROFILES="${NIX_STATE_DIR}/profiles/default ${PREFIX}/.nix-profile"

@@ -19,6 +19,7 @@
     glow
     lazygit
     icdiff
+    gnumake
 
     # python tools
     conda
