@@ -49,3 +49,15 @@ require('my_treesitter')
 
 -- telescope
 require('my_telescope')
+
+-- neogen
+require('neogen').setup {
+    enabled = true,
+    languages = {
+        python = {
+            template = {
+                annotation_convention = "google_docstrings" -- for a full list of annotation_conventions, see supported-languages below,
+                }
+        },
+    }
+}

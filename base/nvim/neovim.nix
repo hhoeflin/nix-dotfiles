@@ -49,6 +49,24 @@
         sha256 = "sha256-JhHjM9pyMnDd8Pkl5VWxn/aeY3b+oiBJh20wsIGYxLk=";
       };
     };
+    neogen = pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = "neogen";
+      version = "2022-02-11";
+      src = pkgs.fetchFromGitHub {
+        owner = "danymat";
+        repo = "neogen";
+        rev = "218e0a63fd28fe3fcd34477e198193f26e0863ce";
+        # sha256 = pkgs.lib.fakeSha256;
+        sha256 = "sha256-rKVQ7bO8d19GaVAF00FOOd8ORBNZmhGu0XuJR1n2FvU=";
+      };
+      #src = pkgs.fetchurl {
+      #  url = "https://github.com/danymat/neogen/archive/d3e0168e1eb4c0a84b132fd0b554427e62a49552.tar.gz";
+      #  sha256 = "04ljl0jscff0xzrmd1ay0d78wjcs4xqc7fzcgkslimzm1yqpc71l";
+      #};
+    };
+    #neogen = pkgs.vimUtils.buildVimPlugin {
+    #  name = "nvim-neogen";
+    #};
   in with pkgs.vimPlugins; [
     # various
     lualine-nvim
@@ -90,5 +108,8 @@
     # highlighting
     #semshi
     haskell-vim
+
+    # doc generation
+    neogen
   ];
 }
