@@ -20,6 +20,7 @@
     lazygit
     icdiff
     gnumake
+    zoxide
 
     # python tools
     conda
@@ -59,6 +60,7 @@
     '';
     initExtra = ''
       export PATH=$HOME/.local/bin:$PATH
+      eval "$(zoxide init bash)"
     '';
   };
 
