@@ -21,6 +21,7 @@
     icdiff
     gnumake
     zoxide
+    du-dust
 
     # python tools
     conda
