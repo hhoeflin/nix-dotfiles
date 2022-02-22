@@ -62,6 +62,11 @@
     initExtra = ''
       export PATH=$HOME/.local/bin:$PATH
       eval "$(zoxide init bash)"
+
+      if [[ -t 0 && $- = *i* ]]
+      then
+        stty -ixon
+      fi
     '';
   };
 
