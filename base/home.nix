@@ -44,6 +44,7 @@
       ll = "exa -lahF";
       lt = "exa -lahF --tree";
       lg = "lazygit";
+      e=''$EDITOR `fzf -m --preview="bat --color always {}"`'';
     };
     profileExtra = ''
       . $HOME/.nix-profile/etc/profile.d/nix.sh
@@ -67,6 +68,7 @@
       then
         stty -ixon
       fi
+      export EDITOR="nvim";
     '';
   };
 
