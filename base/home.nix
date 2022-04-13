@@ -22,6 +22,8 @@
     gnumake
     zoxide
     du-dust
+    tldr
+    just
 
     # python tools
     conda
