@@ -71,6 +71,7 @@
         stty -ixon
       fi
       export EDITOR="nvim";
+      export PYTHONSTARTUP=~/python/pythonrc.py
     '';
   };
 
@@ -89,6 +90,9 @@
 
   # lazygit
   xdg.configFile."lazygit/config.yml".source = lazygit/config.yml;
+
+  # python startup
+  xdg.configFile."python/pythonrc.py".source = python/pythonrc.py;
 
   # neovim
   programs.neovim = import nvim/neovim.nix {pkgs=pkgs;};
