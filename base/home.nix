@@ -71,7 +71,7 @@
         stty -ixon
       fi
       export EDITOR="nvim";
-      export PYTHONSTARTUP=~/python/pythonrc.py
+      export PYTHONSTARTUP=~/.config/python/pythonrc.py
     '';
   };
 
