@@ -19,11 +19,14 @@
     glow
     lazygit
     icdiff
-    gnumake
     zoxide
     du-dust
     tldr
+
+    # task runners
+    gnumake
     just
+    go-task
 
     # python tools
     conda
@@ -66,10 +69,12 @@
       export PATH=$HOME/.local/bin:$PATH
       eval "$(zoxide init bash)"
 
+      # ensure CTRL-S doesn't block the terminal
       if [[ -t 0 && $- = *i* ]]
       then
         stty -ixon
       fi
+
       export EDITOR="nvim";
       export PYTHONSTARTUP=~/.config/python/pythonrc.py
     '';
@@ -96,9 +101,14 @@
 
   # neovim
   programs.neovim = import nvim/neovim.nix {pkgs=pkgs;};
-
   xdg.configFile."nvim/lua" = {
     source = nvim/lua;
+    recursive = true;
+  };
+
+  # go-tasks
+  xdg.configFile."go-task" = {
+    source = "go-task";
     recursive = true;
   };
 }
