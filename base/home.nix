@@ -52,6 +52,7 @@
       lt = "exa -lahF --tree";
       lg = "lazygit";
       e=''$EDITOR `fzf -m --preview="bat --color always {}"`'';
+      dtask = "task -t ~/.config/go-task/Taskfile.yml";
     };
     profileExtra = ''
       . $HOME/.nix-profile/etc/profile.d/nix.sh
