@@ -22,6 +22,8 @@
     zoxide
     du-dust
     tldr
+    mcfly
+    broot
 
     # task runners
     gnumake
