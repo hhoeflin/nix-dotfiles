@@ -23,6 +23,7 @@
     du-dust
     tldr
     broot
+    duf
 
     # task runners
     gnumake
