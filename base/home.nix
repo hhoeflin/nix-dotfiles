@@ -108,7 +108,7 @@
 
   # go-tasks
   xdg.configFile."go-task" = {
-    source = "go-task";
+    source = ./go-task;
     recursive = true;
   };
 }
