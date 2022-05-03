@@ -22,7 +22,6 @@
     zoxide
     du-dust
     tldr
-    mcfly
     broot
 
     # task runners
@@ -80,6 +79,11 @@
       export EDITOR="nvim";
       export PYTHONSTARTUP=~/.config/python/pythonrc.py
     '';
+  };
+
+  programs.mcfly = {
+    enable = true;
+    keyScheme = "vim";
   };
 
   programs.starship = {
