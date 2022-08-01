@@ -27,9 +27,6 @@ alpha.setup(startify.opts)
 -- ale
 require('ale')
 
--- bufstop
-vim.api.nvim_set_keymap('n', '<leader>s', ':BufstopFast<CR>', {silent=true, noremap=true})
-
 -- nvim-tree
 require('nvim-tree').setup({
   update_focused_file = {
