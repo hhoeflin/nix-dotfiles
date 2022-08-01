@@ -85,6 +85,7 @@
     # lsp
     nvim-lspconfig
     lsp_signature-nvim
+    lspsaga-nvim
 
     # treesitter
     (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
