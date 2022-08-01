@@ -2,18 +2,22 @@
   description = "Home Manager NixOS configuration";
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs/release-21.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    #home-manager.url = "github:nix-community/home-manager/release-21.11";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
-    {
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {allowUnfree = true; };
+      };
+    in {
       homeConfigurations = {
         hhoeflin = inputs.home-manager.lib.homeManagerConfiguration {
-          system = "x86_64-linux";
+          inherit system pkgs;
           # Home Manager needs a bit of information about you and the
           # paths it should manage.
           username = "hhoeflin";
@@ -47,7 +51,7 @@
             };
         };
         hoeflho1 = inputs.home-manager.lib.homeManagerConfiguration {
-          system = "x86_64-linux";
+          inherit system pkgs;
           # Home Manager needs a bit of information about you and the
           # paths it should manage.
           homeDirectory = "/home/hoeflho1";

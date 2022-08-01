@@ -10,9 +10,15 @@
     stack
     hlint
     ormolu
+    haskell-language-server  # for neovim
 
-    # neovim
-    haskell-language-server
+    # rust
+    rustc
+    clippy
+    cargo
+    rustfmt
+    rust-analyzer
+
 
     # for spotify
     spotifyd

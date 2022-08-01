@@ -15,17 +15,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "goolord";
         repo = "alpha-nvim";
-        rev = "4781fcfea5ddc1a92d41b32dc325132ed6fce7a8";
-        sha256 = "sha256-GA+fIfVlHOllojGyErYGC0+zyYTl9rOxendqOgApJw4=";
-      };
-    };
-    bufstop = pkgs.vimUtils.buildVimPlugin {
-      name = "bufstop";
-      src = pkgs.fetchFromGitHub {
-        owner = "mihaifm";
-	repo = "bufstop";
-	rev = "51a87fb1fb3031778b465c5c92007ebd1ac677f6";
-        sha256 = "1q2z52pkfas4s8lq4bfcpadq5fr18635kv5l8hggr7fzrdccjv45";
+        rev = "d688f46090a582be8f9d7b70b4cf999b780e993d";
+        sha256 = "sha256-7WBfJ0jTroFTrKVP0bLZtv3bCVWGBT/W2jBZFJiUioE=";
       };
     };
 
@@ -33,9 +24,9 @@
       name = "catppuccin";
       src = pkgs.fetchFromGitHub {
         owner = "catppuccin";
-        repo = "nvim";
-        rev = "8a67df6da476cba68ecf26a519a5279686edbd2e";
-        sha256 = "sha256-KSjPg/93YzprFyAFKOcGYZXlm2kjxMIYTZOeuu7OJvE=";
+        repo = "catppuccin";
+        rev = "6251a800441b7155e3236aefeab8307546d492c9";
+        sha256 = "sha256-dr+l8XjlaEkSJz72zHNv7eoq7y5DAQ+cixiSuy57fIY=";
       };
     };
 
@@ -44,20 +35,21 @@
       src = pkgs.fetchFromGitHub {
         owner = "bluz71";
         repo = "vim-nightfly-guicolors";
-        rev = "2d8d5194ee45826a2994264e220d53546e608b4c";
+        rev = "83f27e09df7c78d8d1a00c67ff53786d66c23568";
         # sha256 = pkgs.lib.fakeSha256;
-        sha256 = "sha256-/l5ZIgD4etiQU5hSnVw06YZySReLNHiG/nrST0QZ0Zg=";
+        sha256 = "sha256-ibF4gTmyITiaUIcPGrFSmmN398p6Xw6DTi8onbrKvNE=";
       };
     };
+
     neogen = pkgs.vimUtils.buildVimPluginFrom2Nix {
       pname = "neogen";
       version = "2022-02-11";
       src = pkgs.fetchFromGitHub {
         owner = "danymat";
         repo = "neogen";
-        rev = "f249a70ee598bdf8d015c10536c0dcd97c79b3aa";
+        rev = "c5a0c39753808faa41dea009d41dd686732c6774";
         # sha256 = pkgs.lib.fakeSha256;
-        sha256 = "sha256-x2jpJ49G6fJhwE2I2FA4wZy/moZokvApJhzUav+fzqA=";
+        sha256 = "sha256-0RTnOEnorb53yHhk7MePeDhQbi4xsCCXObNi8+Bjjqc=";
       };
     };
   in with pkgs.vimPlugins; [
@@ -65,7 +57,6 @@
     lualine-nvim
     alpha
     ale
-    bufstop
     telescope-nvim
     indent-blankline-nvim
 

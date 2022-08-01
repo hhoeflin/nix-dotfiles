@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  # allow unfree packages
+  nixpkgs.config = {allowUnfree = true;};
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -24,6 +26,7 @@
     tldr
     broot
     duf
+    which
 
     # task runners
     gnumake
@@ -119,4 +122,5 @@
     source = ./go-task;
     recursive = true;
   };
+
 }
