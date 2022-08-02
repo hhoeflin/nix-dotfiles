@@ -52,6 +52,19 @@
         sha256 = "sha256-0RTnOEnorb53yHhk7MePeDhQbi4xsCCXObNi8+Bjjqc=";
       };
     };
+
+    lspsaga-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = "lspsaga.nvim";
+      version = "2022-01-19";
+      src = pkgs.fetchFromGitHub {
+        owner = "glepnir";
+        repo = "lspsaga.nvim";
+        rev = "0b3ee6a4fb2cb9c80c05fe7c191ea116bdda34f7";
+        sha256 = "sha256-r7UVk4Q62eZ6iWUn3PMkdXf9satb1Xkh14X/PcESte8=";
+      };
+      meta.homepage = "https://github.com/tami5/lspsaga.nvim/";
+    };
+
   in with pkgs.vimPlugins; [
     # various
     lualine-nvim
