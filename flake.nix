@@ -3,14 +3,20 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-patched.url = "github:hhoeflin/nixpkgs/release-22.05-patched";
     home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager-patched.url = "github:nix-community/home-manager/release-22.05";
+    home-manager-patched.inputs.nixpkgs.follows = "nixpkgs-patched";
   };
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nixpkgs-patched, home-manager-patched, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
+        inherit system;
+        config = {allowUnfree = true; };
+      };
+      pkgs-patched = import nixpkgs-patched {
         inherit system;
         config = {allowUnfree = true; };
       };
@@ -32,11 +38,6 @@
           stateVersion = "21.11";
 
           configuration = { config, pkgs, ... }:
-            let
-              overlay-unstable = final: prev: {
-                unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
-              };
-            in
             {
               nixpkgs.overlays = [ ]; #overlay-unstable ];
               nixpkgs.config = {
@@ -50,8 +51,9 @@
 
             };
         };
-        hoeflho1 = inputs.home-manager.lib.homeManagerConfiguration {
-          inherit system pkgs;
+        hoeflho1 = inputs.home-manager-patched.lib.homeManagerConfiguration {
+          inherit system;
+          pkgs = pkgs-patched;
           # Home Manager needs a bit of information about you and the
           # paths it should manage.
           homeDirectory = "/home/hoeflho1";
@@ -67,33 +69,6 @@
 
           configuration = { config, pkgs, ... }:
             let
-              overlay-unstable = final: prev: {
-                unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
-              };
-              overlay-nix = final: prev:
-	      	let prefix = "/home/hoeflho1/nix";
-		in
-	        {
-                  nix_2_3 = (prev.nix_2_3.override {
-                    storeDir = "${prefix}/store";
-                    stateDir = "${prefix}/var";
-                    confDir = "${prefix}/etc";
-		  }).overrideAttrs (oldAttrs: rec {
-    	            patches = (oldAttrs.patches or []) ++ [./hoeflho1/patches/nix_patch_2_3.patch];
-                  });
-                  nix = (prev.nix.override {
-                    storeDir = "${prefix}/store";
-                    stateDir = "${prefix}/var";
-                    confDir = "${prefix}/etc";
-		  }).overrideAttrs (oldAttrs: rec {
-    	            patches = (oldAttrs.patches or []) ++ [./hoeflho1/patches/nix_patch_2_5.patch];
-                  });
-              };
-              overlay-go = final: prev: {
-                  go_1_16 = prev.go_1_16.overrideAttrs (oldAttrs: rec {
-    	          patches = (oldAttrs.patches or []) ++ [./hoeflho1/patches/skip-chown-tests-1.16.patch];
-                });
-              };
               overlay-brotli = self: super: {
                 python39 = super.python39.override {
                   packageOverrides = python-self: python-super: {
@@ -112,7 +87,7 @@
               };
             in
             {
-              nixpkgs.overlays = [ overlay-unstable overlay-nix overlay-go overlay-brotli];
+              nixpkgs.overlays = [ overlay-brotli];
               nixpkgs.config = {
                 allowUnfree = true;
                 allowBroken = true;
